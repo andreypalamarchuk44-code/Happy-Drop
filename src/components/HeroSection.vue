@@ -1,53 +1,64 @@
 <template>
   <section class="hero">
 
+    <div class="hero-overlay"></div>
+
     <div class="hero-noise"></div>
 
-    <div class="hero-gradient hero-gradient-1"></div>
-    <div class="hero-gradient hero-gradient-2"></div>
+    <div class="hero-light light-1"></div>
+    <div class="hero-light light-2"></div>
 
-    <div class="hero-content">
+    <div class="hero-container">
 
-      <p class="hero-label">
-        PREMIUM UKRAINIAN TINCTURE
-      </p>
+      <div class="hero-left">
 
-      <h1>
-        Смак,<br>
-        що має<br>
-        характер
-      </h1>
+        <p class="hero-label">
+          PREMIUM UKRAINIAN TINCTURE
+        </p>
 
-      <span>
-        Авторські настоянки ручної роботи
-        з натуральних інгредієнтів та
-        глибоким післясмаком.
-      </span>
+        <h1>
+          П'яній 
+          з натураним<br>
+          алкоголем<br>
+  
+        </h1>
 
-      <div class="hero-buttons">
+        <p class="hero-text">
+          Авторські настоянки ручної роботи
+          з натуральних інгредієнтів та
+          атмосферою справжнього premium experience.
+        </p>
 
-        <button class="hero-btn primary">
-          Відкрити колекцію
-        </button>
+        <div class="hero-buttons">
 
-        <button class="hero-btn secondary">
-          Історія бренду
-        </button>
+          <button class="hero-btn primary">
+            Відкрити колекцію
+          </button>
+
+          <button class="hero-btn secondary">
+            Наша історія
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="hero-right">
+
+        <div class="bottle-glow"></div>
+
+        <img
+          src="/img/bottle.png"
+          alt="bottle"
+          class="hero-bottle"
+        >
 
       </div>
 
     </div>
 
-    <div class="hero-image">
-
-      <div class="bottle-glow"></div>
-
-      <img src="/img/bottle.png" alt="bottle">
-
-    </div>
-
     <div class="hero-bg-text">
-      TINCTURE
+     HappyDrop
     </div>
 
   </section>
@@ -60,36 +71,43 @@
 
   min-height:100vh;
 
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  overflow:hidden;
 
+  display:flex;
   align-items:center;
 
   padding:0 8%;
 
-  overflow:hidden;
-
   background:
-    radial-gradient(
-      circle at top,
-      rgba(200,169,107,.08),
-      transparent 40%
-    ),
-    var(--bg);
+    linear-gradient(
+      to bottom,
+      #050607,
+      #090a0c
+    );
 }
 
-.hero-content{
+.hero-container{
   position:relative;
   z-index:5;
+
+  width:100%;
+
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+
+  align-items:center;
+}
+
+.hero-left{
+  max-width:700px;
 }
 
 .hero-label{
-  font-size:.75rem;
-
-  letter-spacing:.35em;
-  text-transform:uppercase;
-
   color:var(--gold);
+
+  font-size:.72rem;
+  letter-spacing:.38em;
+  text-transform:uppercase;
 
   margin-bottom:2rem;
 }
@@ -97,8 +115,8 @@
 .hero h1{
   font-family:var(--serif);
 
-  font-size:7rem;
-  line-height:.9;
+  font-size:7.5rem;
+  line-height:.88;
   font-weight:600;
 
   margin-bottom:2rem;
@@ -106,15 +124,13 @@
   color:var(--text);
 }
 
-.hero span{
-  display:block;
+.hero-text{
+  max-width:540px;
 
-  max-width:520px;
+  color:var(--text2);
 
   font-size:1.05rem;
   line-height:1.9;
-
-  color:var(--text2);
 
   margin-bottom:3rem;
 }
@@ -125,7 +141,7 @@
 }
 
 .hero-btn{
-  height:56px;
+  height:58px;
 
   padding:0 2rem;
 
@@ -135,17 +151,16 @@
 
   cursor:pointer;
 
-  font-family:var(--sans);
   font-size:.72rem;
   font-weight:700;
 
-  letter-spacing:.15em;
+  letter-spacing:.14em;
   text-transform:uppercase;
 
   transition:
     transform .5s var(--ease),
-    background .5s var(--ease),
-    box-shadow .5s var(--ease);
+    box-shadow .5s var(--ease),
+    background .5s var(--ease);
 }
 
 .hero-btn:hover{
@@ -154,21 +169,21 @@
 
 .primary{
   background:var(--gold);
-  color:#111;
+
+  color:#7a5555;
 
   box-shadow:
-    0 0 30px rgba(200,169,107,.3);
+    0 0 40px rgba(200,169,107,.25);
 }
 
 .primary:hover{
   background:var(--gold2);
 
   box-shadow:
-    0 0 60px rgba(200,169,107,.45);
+    0 0 70px rgba(200,169,107,.45);
 }
-
 .secondary{
-  background:rgba(255,255,255,.04);
+  background:rgba(216, 202, 202, 0.651);
 
   border:1px solid var(--border);
 
@@ -178,12 +193,12 @@
 }
 
 .secondary:hover{
-  border-color:var(--border-h);
-
   background:rgba(255,255,255,.06);
+
+  border-color:var(--border-h);
 }
 
-.hero-image{
+.hero-right{
   position:relative;
 
   display:flex;
@@ -191,37 +206,38 @@
   align-items:center;
 }
 
-.hero-image img{
-  width:520px;
-
+.hero-bottle{
   position:relative;
-  z-index:2;
+  z-index:5;
+
+  width:580px;
 
   filter:
-    drop-shadow(0 0 60px rgba(200,169,107,.2));
+    drop-shadow(0 0 60px rgba(200,169,107,.18));
 
-  animation:float 6s ease-in-out infinite;
+  animation:
+    float 6s ease-in-out infinite;
 }
 
 .bottle-glow{
   position:absolute;
 
-  width:420px;
-  height:420px;
+  width:450px;
+  height:450px;
 
   border-radius:50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(200,169,107,.28),
+      rgba(200,169,107,.22),
       transparent 70%
     );
 
-  filter:blur(60px);
+  filter:blur(70px);
 }
 
-.hero-gradient{
+.hero-light{
   position:absolute;
 
   border-radius:50%;
@@ -231,54 +247,68 @@
   pointer-events:none;
 }
 
-.hero-gradient-1{
+.light-1{
   width:500px;
   height:500px;
 
-  background:rgba(200,169,107,.12);
+  background:
+    rgba(200,169,107,.08);
 
   top:-200px;
   left:-150px;
 }
 
-.hero-gradient-2{
+.light-2{
   width:600px;
   height:600px;
 
-  background:rgba(46,184,122,.08);
+  background:
+    rgba(46,184,122,.06);
 
+  right:-250px;
   bottom:-250px;
-  right:-200px;
 }
 
-.hero-bg-text{
+.hero-overlay{
   position:absolute;
+  inset:0;
 
-  bottom:0;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  font-size:14rem;
-  font-weight:800;
-
-  letter-spacing:.25em;
-
-  color:rgba(255,255,255,.03);
-
-  pointer-events:none;
-
-  user-select:none;
+  background:
+    radial-gradient(
+      circle at center,
+      transparent,
+      rgba(0,0,0,.45)
+    );
 }
 
 .hero-noise{
   position:absolute;
   inset:0;
 
-  opacity:.04;
+  opacity:.035;
 
   background-image:
     url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+.hero-bg-text{
+  position:absolute;
+
+  bottom:-20px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  font-size:12rem;
+  font-weight:900;
+
+  letter-spacing:.25em;
+
+  color:rgba(255,255,255,.02);
+
+  user-select:none;
+
+  white-space:nowrap;
 }
 
 @keyframes float{
@@ -300,18 +330,22 @@
 @media(max-width:1100px){
 
   .hero{
-    grid-template-columns:1fr;
-
     padding-top:10rem;
+  }
+
+  .hero-container{
+    grid-template-columns:1fr;
 
     text-align:center;
   }
 
-  .hero-content{
+  .hero-left{
+    margin:auto;
+
     margin-bottom:4rem;
   }
 
-  .hero span{
+  .hero-text{
     margin-inline:auto;
   }
 
@@ -323,12 +357,12 @@
     font-size:4.5rem;
   }
 
-  .hero-image img{
+  .hero-bottle{
     width:320px;
   }
 
   .hero-bg-text{
-    font-size:5rem;
+    font-size:4rem;
   }
 
 }

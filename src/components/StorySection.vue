@@ -1,49 +1,99 @@
 <template>
-  <section class="story">
+  <section class="story-section">
 
-    <div class="story-container">
+    <div class="container">
 
-      <div class="story-left">
+      <!-- LEFT BIG CARD -->
+      <div class="story-card big-card">
 
-        <p class="label">OUR STORY</p>
+        <div class="image-overlay"></div>
 
-        <h2>
-          Створено<br>
-          з традиції<br>
-          та характеру
-        </h2>
+        <img
+          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b"
+          alt=""
+        />
 
-        <p class="text">
-          Наші настоянки — це поєднання стародавніх рецептів
-          та сучасного підходу до якості. Кожна пляшка створена
-          вручну з натуральних інгредієнтів.
-        </p>
+        <div class="card-content">
 
-        <div class="stats">
+          <span class="section-tag">
+            НАША ІСТОРІЯ
+          </span>
 
-          <div class="stat">
-            <span>100%</span>
-            <p>Натуральні інгредієнти</p>
-          </div>
+          <h2>
+            Народжено<br />
+            для справжнього<br />
+            смаку
+          </h2>
 
-          <div class="stat">
-            <span>7+</span>
-            <p>Етапів фільтрації</p>
-          </div>
+          <p>
+            Кожен напій створений
+            з увагою до деталей,
+            атмосфери та характеру.
+          </p>
 
-          <div class="stat">
-            <span>24h</span>
-            <p>Повільна екстракція</p>
-          </div>
+          <button>
+            Дізнатись більше
+          </button>
 
         </div>
 
       </div>
 
-      <div class="story-right">
+      <!-- RIGHT SIDE -->
+      <div class="right-grid">
 
-        <div class="image-card">
-          <!-- <img src="/img/story.jpg" alt="story image"> -->
+        <!-- FEATURES -->
+        <div class="features-card">
+
+          <div class="feature">
+            <span>✦</span>
+            <div>
+              <h4>100% Натурально</h4>
+              <p>Тільки преміальні інгредієнти</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <span>✦</span>
+            <div>
+              <h4>Авторські рецепти</h4>
+              <p>Унікальні поєднання смаків</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <span>✦</span>
+            <div>
+              <h4>Преміальна витримка</h4>
+              <p>Глибокий насичений характер</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ATMOSPHERE CARD -->
+        <div class="atmosphere-card">
+
+          <div class="gradient"></div>
+
+          <img
+            src="https://images.unsplash.com/photo-1514361892635-eae31ec8f9c0"
+            alt=""
+          />
+
+          <div class="atmosphere-content">
+
+            <span class="section-tag">
+              АТМОСФЕРА
+            </span>
+
+            <h3>
+              Моменти,<br />
+              які залишаються
+            </h3>
+
+          </div>
+
         </div>
 
       </div>
@@ -55,102 +105,320 @@
 
 <style scoped>
 
-.story{
-  padding:10rem 8%;
-  background:linear-gradient(to bottom, var(--bg), var(--bg1));
+.story-section {
+  position: relative;
+
+  background: #050505;
+
+  padding: 120px 0;
+
+  overflow: hidden;
 }
 
-.story-container{
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:6rem;
-  align-items:center;
+.container {
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 0 80px;
+
+  display: grid;
+
+  grid-template-columns: 1.3fr 1fr;
+
+  gap: 28px;
 }
 
-.label{
-  color:var(--gold);
-  letter-spacing:.3em;
-  font-size:.75rem;
-  margin-bottom:1.5rem;
+/* BIG CARD */
+
+.story-card {
+  position: relative;
+
+  border-radius: 32px;
+
+  overflow: hidden;
+
+  min-height: 650px;
+
+  background: #111;
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  box-shadow:
+    0 20px 80px rgba(0,0,0,0.45);
 }
 
-.story h2{
-  font-family:var(--serif);
-  font-size:5rem;
-  line-height:1;
-  margin-bottom:2rem;
+.story-card img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
 }
 
-.text{
-  color:var(--text2);
-  font-size:1.05rem;
-  line-height:1.9;
-  max-width:520px;
-  margin-bottom:3rem;
+.image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.92),
+      rgba(0,0,0,0.25)
+    );
+
+  z-index: 1;
 }
 
-.stats{
-  display:flex;
-  gap:2rem;
+.card-content {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  height: 100%;
 }
 
-.stat span{
-  font-size:2rem;
-  font-weight:700;
-  color:var(--gold);
+.section-tag {
+  color: #d6a55c;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 18px;
+
+  display: inline-block;
 }
 
-.stat p{
-  font-size:.8rem;
-  color:var(--text2);
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+
+  color: white;
+
+  font-size: 68px;
+
+  line-height: 0.95;
+
+  margin-bottom: 24px;
 }
 
-.story-right{
-  position:relative;
+.card-content p {
+  color: rgba(255,255,255,0.7);
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  max-width: 500px;
+
+  margin-bottom: 34px;
 }
 
-.image-card{
-  position:relative;
-  border-radius:20px;
-  overflow:hidden;
+button {
+  width: fit-content;
 
-  border:1px solid var(--border);
+  background:
+    linear-gradient(
+      135deg,
+      #f5c27a,
+      #d6a55c
+    );
 
-  transform:rotate(-2deg);
+  color: black;
 
-  transition:transform .6s var(--ease);
+  border: none;
+
+  padding: 16px 28px;
+
+  border-radius: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.4s;
 }
 
-.image-card:hover{
-  transform:rotate(0deg) scale(1.02);
+button:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 40px rgba(214,165,92,0.3);
 }
 
-.image-card img{
-  width:100%;
-  height:600px;
-  object-fit:cover;
+/* RIGHT SIDE */
 
-  filter:contrast(1.1) saturate(1.1);
+.right-grid {
+  display: flex;
+  flex-direction: column;
+
+  gap: 28px;
 }
 
-@media(max-width:1000px){
+/* FEATURES */
 
-  .story-container{
-    grid-template-columns:1fr;
-    text-align:center;
+.features-card {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.04),
+      rgba(255,255,255,0.02)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  border-radius: 28px;
+
+  padding: 42px;
+
+  backdrop-filter: blur(20px);
+}
+
+.feature {
+  display: flex;
+
+  gap: 20px;
+
+  margin-bottom: 34px;
+}
+
+.feature:last-child {
+  margin-bottom: 0;
+}
+
+.feature span {
+  color: #d6a55c;
+
+  font-size: 24px;
+}
+
+.feature h4 {
+  color: white;
+
+  margin-bottom: 8px;
+
+  font-size: 20px;
+}
+
+.feature p {
+  color: rgba(255,255,255,0.65);
+
+  line-height: 1.6;
+}
+
+/* ATMOSPHERE */
+
+.atmosphere-card {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 320px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+}
+
+.atmosphere-card img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.gradient {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.85),
+      rgba(0,0,0,0.2)
+    );
+
+  z-index: 1;
+}
+
+.atmosphere-content {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 42px;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+h3 {
+  color: white;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 54px;
+
+  line-height: 1;
+}
+
+@media (max-width: 1100px) {
+
+  .container {
+    grid-template-columns: 1fr;
   }
 
-  .stats{
-    justify-content:center;
-    flex-wrap:wrap;
+  h2 {
+    font-size: 52px;
   }
 
-  .story h2{
-    font-size:3rem;
+  h3 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 0 24px;
   }
 
-  .image-card img{
-    height:400px;
+  .story-card {
+    min-height: 520px;
+  }
+
+  .card-content {
+    padding: 36px;
+  }
+
+  h2 {
+    font-size: 42px;
+  }
+
+  h3 {
+    font-size: 34px;
+  }
+
+  .features-card {
+    padding: 28px;
   }
 }
 

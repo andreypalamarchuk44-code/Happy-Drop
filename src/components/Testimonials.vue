@@ -1,164 +1,424 @@
+<script setup>
+import { ref } from 'vue'
+
+const reviews = ref([
+  {
+    initials: 'AK',
+    name: 'Андрій',
+    city: 'Київ',
+    text: 'Один із найкращих смаків, які я пробував.'
+  },
+  {
+    initials: 'ML',
+    name: 'Марія',
+    city: 'Львів',
+    text: 'Дуже стильна подача та premium атмосфера.'
+  }
+])
+
+const newName = ref('')
+const newCity = ref('')
+const newText = ref('')
+
+const addReview = () => {
+
+  if (
+    !newName.value ||
+    !newText.value
+  ) return
+
+  reviews.value.push({
+    initials: newName.value.slice(0,2).toUpperCase(),
+    name: newName.value,
+    city: newCity.value || 'Україна',
+    text: newText.value
+  })
+
+  newName.value = ''
+  newCity.value = ''
+  newText.value = ''
+}
+</script>
+
 <template>
-  <section class="gallery">
 
-    <div class="gallery-top">
+  <section class="testimonials">
 
-      <p class="label">
-        EXPERIENCE
-      </p>
+    <div class="container">
 
-      <h2>
-        Атмосфера,<br>
-        яку неможливо<br>
-        забути
-      </h2>
+      <div class="section-header">
 
-    </div>
+        <span class="section-tag">
+          ВІДГУКИ
+        </span>
 
-    <div class="gallery-grid">
+        <h2>
+          Враження,<br>
+          що залишаються
+        </h2>
 
-      <div class="gallery-item large">
-        <img src="/img/spicey.jpg" alt="">
       </div>
 
-      <div class="gallery-item">
-        <img src="/img/gallery-2.jpeg" alt="">
+      <!-- REVIEWS -->
+
+      <div class="reviews-grid">
+
+        <div
+          class="review-card"
+          v-for="(review,index) in reviews"
+          :key="index"
+        >
+
+          <div class="quote">
+            ✦
+          </div>
+
+          <p>
+            "{{ review.text }}"
+          </p>
+
+          <div class="review-footer">
+
+            <div class="review-avatar">
+              {{ review.initials }}
+            </div>
+
+            <div>
+
+              <h4>
+                {{ review.name }}
+              </h4>
+
+              <span>
+                {{ review.city }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="gallery-item">
-        <img src="/img/gallery-3.jpg" alt="">
-      </div>
+      <!-- FORM -->
 
-      <div class="gallery-item wide">
-        <img src="/img/gallery-4.jpg" alt="">
+      <div class="review-form">
+
+        <h3>
+          Залишити відгук
+        </h3>
+
+        <input
+          v-model="newName"
+          type="text"
+          placeholder="Ваше ім’я"
+        >
+
+        <input
+          v-model="newCity"
+          type="text"
+          placeholder="Місто"
+        >
+
+        <textarea
+          v-model="newText"
+          placeholder="Ваш коментар"
+        ></textarea>
+
+        <button @click="addReview">
+          Надіслати
+        </button>
+
       </div>
 
     </div>
 
   </section>
+
 </template>
 
 <style scoped>
 
-.gallery{
-  position:relative;
-
-  padding:10rem 8%;
+.testimonials{
+  padding:10rem 0;
 
   background:
     linear-gradient(
       to bottom,
-      var(--bg2),
-      var(--bg3)
+      #080808,
+      #0d0d0d
     );
 }
 
-.gallery-top{
+.container{
+  max-width:1400px;
+
+  margin:auto;
+
+  padding:0 80px;
+}
+
+/* HEADER */
+
+.section-header{
+  text-align:center;
+
   margin-bottom:5rem;
 }
 
-.label{
-  color:var(--gold);
+.section-tag{
+  color:#c8a96b;
 
-  font-size:.75rem;
   letter-spacing:.3em;
+
+  font-size:.72rem;
+
+  display:inline-block;
 
   margin-bottom:1rem;
 }
 
-.gallery h2{
-  font-family:var(--serif);
+.section-header h2{
+  font-family:'Cormorant Garamond', serif;
 
-  font-size:5rem;
-  line-height:1;
+  font-size:5.5rem;
+
+  line-height:.95;
 }
 
-.gallery-grid{
+/* GRID */
+
+.reviews-grid{
   display:grid;
 
-  grid-template-columns:1.3fr 1fr;
-  grid-auto-rows:320px;
+  grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
 
-  gap:1.5rem;
+  gap:2rem;
+
+  margin-bottom:6rem;
 }
 
-.gallery-item{
+/* CARD */
+
+.review-card{
   position:relative;
 
-  overflow:hidden;
+  padding:3rem;
 
-  border-radius:28px;
-
-  border:1px solid var(--border);
-
-  background:#111;
-}
-
-.gallery-item img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  transition:
-    transform 1.2s var(--ease),
-    filter .8s var(--ease);
-
-  filter:
-    brightness(.8)
-    contrast(1.05)
-    saturate(1.1);
-}
-
-.gallery-item:hover img{
-  transform:scale(1.08);
-
-  filter:
-    brightness(1)
-    contrast(1.1)
-    saturate(1.15);
-}
-
-.large{
-  grid-row:span 2;
-}
-
-.wide{
-  grid-column:span 2;
-}
-
-.gallery-item::after{
-  content:'';
-
-  position:absolute;
-  inset:0;
+  border-radius:32px;
 
   background:
     linear-gradient(
-      to top,
-      rgba(0,0,0,.4),
-      transparent
+      180deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.02)
     );
 
-  pointer-events:none;
+  border:
+    1px solid rgba(255,255,255,.06);
+
+  backdrop-filter:blur(20px);
+
+  transition:.45s ease;
 }
 
-@media(max-width:1000px){
+.review-card:hover{
+  transform:translateY(-8px);
 
-  .gallery-grid{
-    grid-template-columns:1fr;
+  border-color:
+    rgba(200,169,107,.25);
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.35);
+}
+
+.quote{
+  position:absolute;
+
+  top:20px;
+  right:28px;
+
+  color:
+    rgba(200,169,107,.12);
+
+  font-size:4rem;
+}
+
+.review-card p{
+  color:
+    rgba(255,255,255,.82);
+
+  line-height:1.8;
+
+  font-size:1.15rem;
+
+  margin-bottom:2.5rem;
+}
+
+/* FOOTER */
+
+.review-footer{
+  display:flex;
+
+  align-items:center;
+
+  gap:1rem;
+}
+
+.review-avatar{
+  width:58px;
+  height:58px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,169,107,.18),
+      rgba(200,169,107,.05)
+    );
+
+  border:
+    1px solid rgba(200,169,107,.25);
+
+  color:#c8a96b;
+
+  font-size:.85rem;
+  font-weight:700;
+
+  letter-spacing:.15em;
+}
+
+.review-footer h4{
+  color:white;
+
+  margin-bottom:.3rem;
+}
+
+.review-footer span{
+  color:
+    rgba(255,255,255,.45);
+
+  font-size:.85rem;
+}
+
+/* FORM */
+
+.review-form{
+  max-width:700px;
+
+  margin:auto;
+
+  padding:4rem;
+
+  border-radius:36px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.015)
+    );
+
+  border:
+    1px solid rgba(255,255,255,.06);
+}
+
+.review-form h3{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:3rem;
+
+  margin-bottom:2rem;
+
+  text-align:center;
+}
+
+.review-form input,
+.review-form textarea{
+  width:100%;
+
+  background:
+    rgba(255,255,255,.03);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  border-radius:18px;
+
+  padding:1rem 1.2rem;
+
+  color:white;
+
+  margin-bottom:1rem;
+
+  outline:none;
+
+  transition:.3s ease;
+}
+
+.review-form textarea{
+  min-height:140px;
+
+  resize:none;
+}
+
+.review-form input:focus,
+.review-form textarea:focus{
+  border-color:
+    rgba(200,169,107,.35);
+}
+
+.review-form button{
+  width:100%;
+  height:56px;
+
+  border:none;
+
+  border-radius:999px;
+
+  background:#c8a96b;
+
+  color:#111;
+
+  font-weight:700;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  transition:.35s ease;
+}
+
+.review-form button:hover{
+  transform:translateY(-2px);
+
+  background:#e2c98a;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .container{
+    padding:0 24px;
   }
 
-  .large,
-  .wide{
-    grid-column:auto;
-    grid-row:auto;
-  }
-
-  .gallery h2{
+  .section-header h2{
     font-size:3.5rem;
   }
 
-}
+  .review-form{
+    padding:2rem;
+  }
 
+}
 </style>

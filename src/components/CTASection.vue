@@ -1,35 +1,51 @@
 <template>
-  <section class="cta">
+  <section class="cta-section">
 
-    <div class="cta-glow cta-glow-1"></div>
-    <div class="cta-glow cta-glow-2"></div>
+    <!-- BACKGROUND -->
+    <div class="bg-overlay"></div>
 
-    <div class="cta-box">
+    <div class="bg-glow left"></div>
+    <div class="bg-glow right"></div>
 
-      <p class="label">
-        PREMIUM EXPERIENCE
-      </p>
+    <div class="container">
 
-      <h2>
-        Відчуй смак<br>
-        справжньої<br>
-        настоянки
-      </h2>
+      <div class="cta-card">
 
-      <span>
-        Авторські рецепти, натуральні інгредієнти
-        та атмосфера, яку хочеться проживати знову.
-      </span>
+        <!-- CONTENT -->
+        <div class="cta-content">
 
-      <div class="cta-buttons">
+          <span class="section-tag">
+            PREMIUM EXPERIENCE
+          </span>
 
-        <button class="primary">
-          Замовити зараз
-        </button>
+          <h2>
+            Відчуй<br />
+            справжній<br />
+            характер смаку
+          </h2>
 
-        <button class="secondary">
-          Дізнатись більше
-        </button>
+          <p>
+            Відкрий для себе колекцію
+            авторських напоїв із преміальною
+            атмосферою та унікальною подачею.
+          </p>
+
+          <div class="buttons">
+
+            <button class="gold-btn">
+              Замовити зараз
+            </button>
+
+            <button class="glass-btn">
+              Дивитись колекцію
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- DECOR -->
+        <div class="decor-circle"></div>
 
       </div>
 
@@ -40,200 +56,290 @@
 
 <style scoped>
 
-.cta{
-  position:relative;
+.cta-section {
+  position: relative;
 
-  padding:12rem 8%;
+  padding: 140px 0 160px;
 
-  overflow:hidden;
+  background: #050505;
+
+  overflow: hidden;
+}
+
+/* OVERLAY */
+
+.bg-overlay {
+  position: absolute;
+
+  inset: 0;
 
   background:
-    linear-gradient(
-      to bottom,
-      var(--bg3),
-      var(--bg)
+    radial-gradient(
+      circle at center,
+      rgba(255,140,0,0.08),
+      transparent 60%
     );
 }
 
-.cta-box{
-  position:relative;
-  z-index:2;
+/* GLOW */
 
-  max-width:1100px;
+.bg-glow {
+  position: absolute;
 
-  margin:auto;
+  width: 600px;
+  height: 600px;
 
-  padding:7rem 4rem;
+  border-radius: 50%;
 
-  border-radius:40px;
+  filter: blur(140px);
 
-  text-align:center;
+  opacity: 0.16;
+}
+
+.bg-glow.left {
+  top: -120px;
+  left: -180px;
+
+  background: #ff8a00;
+}
+
+.bg-glow.right {
+  bottom: -160px;
+  right: -120px;
+
+  background: #d6a55c;
+}
+
+/* CONTAINER */
+
+.container {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 0 80px;
+}
+
+/* CARD */
+
+.cta-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 40px;
+
+  min-height: 620px;
+
+  padding: 80px;
+
+  display: flex;
+  align-items: center;
 
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.04),
-      rgba(255,255,255,.02)
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.02)
     );
 
-  border:1px solid var(--border);
+  border:
+    1px solid rgba(255,255,255,0.06);
 
-  backdrop-filter:blur(24px);
-
-  overflow:hidden;
-}
-
-.label{
-  color:var(--gold);
-
-  font-size:.75rem;
-  letter-spacing:.35em;
-
-  margin-bottom:2rem;
-}
-
-.cta h2{
-  font-family:var(--serif);
-
-  font-size:5.5rem;
-  line-height:.95;
-
-  margin-bottom:2rem;
-}
-
-.cta span{
-  display:block;
-
-  max-width:650px;
-
-  margin:auto;
-
-  color:var(--text2);
-
-  line-height:1.9;
-  font-size:1.05rem;
-
-  margin-bottom:3rem;
-}
-
-.cta-buttons{
-  display:flex;
-  justify-content:center;
-  gap:1rem;
-}
-
-.cta button{
-  height:58px;
-
-  padding:0 2.2rem;
-
-  border:none;
-  border-radius:999px;
-
-  cursor:pointer;
-
-  font-size:.72rem;
-  font-weight:700;
-
-  letter-spacing:.14em;
-  text-transform:uppercase;
-
-  transition:
-    transform .5s var(--ease),
-    background .5s var(--ease),
-    box-shadow .5s var(--ease);
-}
-
-.cta button:hover{
-  transform:translateY(-3px);
-}
-
-.primary{
-  background:var(--gold);
-
-  color:#111;
+  backdrop-filter: blur(20px);
 
   box-shadow:
-    0 0 30px rgba(200,169,107,.25);
+    0 30px 100px rgba(0,0,0,0.45);
 }
 
-.primary:hover{
-  background:var(--gold2);
+/* CONTENT */
+
+.cta-content {
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 720px;
+}
+
+.section-tag {
+  display: inline-block;
+
+  color: #d6a55c;
+
+  letter-spacing: 2px;
+
+  font-size: 13px;
+
+  margin-bottom: 24px;
+}
+
+.cta-content h2 {
+  color: white;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 110px;
+
+  line-height: 0.9;
+
+  margin-bottom: 28px;
+}
+
+.cta-content p {
+  color: rgba(255,255,255,0.72);
+
+  font-size: 20px;
+
+  line-height: 1.8;
+
+  max-width: 620px;
+
+  margin-bottom: 42px;
+}
+
+/* BUTTONS */
+
+.buttons {
+  display: flex;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.gold-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #f5c27a,
+      #d6a55c
+    );
+
+  color: black;
+
+  border: none;
+
+  padding: 18px 34px;
+
+  border-radius: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.4s;
 
   box-shadow:
-    0 0 60px rgba(200,169,107,.45);
+    0 15px 40px rgba(214,165,92,0.22);
 }
 
-.secondary{
-  background:rgba(255,255,255,.04);
+.gold-btn:hover {
+  transform:
+    translateY(-4px);
 
-  border:1px solid var(--border);
-
-  color:var(--text);
-
-  backdrop-filter:blur(12px);
+  box-shadow:
+    0 22px 60px rgba(214,165,92,0.4);
 }
 
-.secondary:hover{
-  background:rgba(255,255,255,.06);
+.glass-btn {
+  background:
+    rgba(255,255,255,0.05);
 
-  border-color:var(--border-h);
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  color: white;
+
+  padding: 18px 34px;
+
+  border-radius: 16px;
+
+  backdrop-filter: blur(20px);
+
+  cursor: pointer;
+
+  transition: 0.4s;
 }
 
-.cta-glow{
-  position:absolute;
+.glass-btn:hover {
+  background:
+    rgba(255,255,255,0.08);
 
-  border-radius:50%;
-
-  filter:blur(120px);
-
-  pointer-events:none;
+  transform:
+    translateY(-4px);
 }
 
-.cta-glow-1{
-  width:500px;
-  height:500px;
+/* DECOR */
+
+.decor-circle {
+  position: absolute;
+
+  right: -120px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 520px;
+  height: 520px;
+
+  border-radius: 50%;
 
   background:
-    rgba(200,169,107,.12);
+    radial-gradient(
+      circle,
+      rgba(255,140,0,0.24),
+      transparent 70%
+    );
 
-  top:-200px;
-  left:-200px;
+  filter: blur(40px);
 }
 
-.cta-glow-2{
-  width:600px;
-  height:600px;
+/* RESPONSIVE */
 
-  background:
-    rgba(46,184,122,.08);
+@media (max-width: 1100px) {
 
-  bottom:-250px;
-  right:-250px;
+  .cta-content h2 {
+    font-size: 72px;
+  }
+
+  .cta-card {
+    padding: 60px;
+  }
 }
 
-@media(max-width:1000px){
+@media (max-width: 768px) {
 
-  .cta{
-    padding:8rem 5%;
+  .container {
+    padding: 0 24px;
   }
 
-  .cta-box{
-    padding:4rem 2rem;
+  .cta-card {
+    padding: 40px;
+
+    min-height: auto;
   }
 
-  .cta h2{
-    font-size:3.5rem;
+  .cta-content h2 {
+    font-size: 48px;
   }
 
-  .cta-buttons{
-    flex-direction:column;
+  .cta-content p {
+    font-size: 17px;
   }
 
-  .cta button{
-    width:100%;
+  .buttons {
+    flex-direction: column;
   }
 
+  .gold-btn,
+  .glass-btn {
+    width: 100%;
+  }
 }
 
 </style>

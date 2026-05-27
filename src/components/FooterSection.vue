@@ -99,7 +99,7 @@
     </div>
 
     <div class="footer-bg">
-      NASTOYANKA
+      HAPPYDROP
     </div>
 
   </footer>

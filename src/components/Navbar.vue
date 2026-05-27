@@ -1,126 +1,199 @@
 <template>
-  <nav :class="{sc:scrolled}">
-  <a href="#" class="nb">SYL<span>V</span>A</a>
-  <ul class="nl">
-    <li><a href="#products">Настоянки</a></li>
-    <li><a href="#ingredients">Інгредієнти</a></li>
-    <li><a href="#process">Процес</a></li>
-    <li><a href="#ritual">Ритуал</a></li>
-  </ul>
-  <button class="ncta">Замовити</button>
-</nav>
+  <header class="navbar">
+
+    <div class="nav-container">
+
+      <!-- LOGO -->
+      <div class="logo">
+        HAPPY<span>DROP</span>
+      </div>
+
+      <!-- NAVIGATION -->
+      <nav class="nav-links">
+
+        <a href="#">
+          Головна
+        </a>
+
+     <a href="#collection">
+        Колекція
+      </a>
+
+        <a href="#">
+          Історія
+        </a>
+
+        <a href="#">
+          Відгуки
+        </a>
+
+        <a href="#">
+          Контакти
+        </a>
+
+      </nav>
+
+      <!-- CTA -->
+      <button class="nav-btn">
+        Замовити
+      </button>
+
+    </div>
+
+  </header>
 </template>
 
-<script>
-</script>
+<style scoped>
 
-<style>
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
+.navbar {
+  position: fixed;
 
-  z-index:500;
+  top: 0;
+  left: 0;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  width: 100%;
 
-  padding:1.875rem 4rem;
+  z-index: 999;
 
-  transition:
-    padding .5s var(--ease),
-    background .5s,
-    border-color .5s;
+  padding: 22px 0;
+
+  backdrop-filter: blur(18px);
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.15)
+    );
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.05);
 }
 
-.navbar.sc{
-  background:rgba(7,8,10,.82);
+.nav-container {
+  width: 100%;
+  max-width: 1400px;
 
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  margin: auto;
 
-  border-bottom:1px solid var(--border);
+  padding: 0 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 34px;
+
+  color: white;
+
+  letter-spacing: 2px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.logo span {
+  color: #d6a55c;
+}
+
+.nav-links {
+  display: flex;
+  gap: 42px;
+}
+
+.nav-links a {
+  position: relative;
+
+  text-decoration: none;
+
+  color: rgba(255,255,255,0.75);
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 15px;
+
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links a::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0%;
+  height: 1px;
+
+  background: #d6a55c;
+
+  transition: 0.35s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #f5c27a,
+      #d6a55c
+    );
+
+  color: black;
+
+  border: none;
+
+  padding: 14px 28px;
+
+  border-radius: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.4s;
 
   box-shadow:
-    0 10px 40px rgba(0,0,0,.18);
-
-  padding:1.25rem 4rem;
+    0 10px 30px rgba(214,165,92,0.18);
 }
 
-.nb{
-  font-family:var(--sans);
-  font-size:1.3rem;
-  font-weight:800;
-
-  letter-spacing:.22em;
-  text-transform:uppercase;
-
-  color:var(--text);
-}
-
-.nb span{
-  color:var(--gold);
-}
-
-.nl{
-  display:flex;
-  gap:2.5rem;
-
-  list-style:none;
-}
-
-.nl a{
-  font-size:.7rem;
-  font-weight:500;
-
-  letter-spacing:.14em;
-  text-transform:uppercase;
-
-  color:var(--text2);
-
-  transition:color .25s;
-}
-
-.nl a:hover{
-  color:var(--text);
-}
-
-.ncta{
-  font-family:var(--sans);
-  font-size:.7rem;
-  font-weight:700;
-
-  letter-spacing:.12em;
-  text-transform:uppercase;
-
-  color:var(--bg);
-  background:var(--gold);
-
-  border:none;
-
-  padding:.9rem 1.8rem;
-
-  border-radius:999px;
-
-  cursor:pointer;
-
-  transition:
-    transform .35s var(--ease),
-    box-shadow .35s var(--ease),
-    background .35s var(--ease);
+.nav-btn:hover {
+  transform: translateY(-3px);
 
   box-shadow:
-    0 0 24px rgba(200,169,107,.25);
+    0 18px 40px rgba(214,165,92,0.35);
 }
 
-.ncta:hover{
-  background:var(--gold2);
+@media (max-width: 992px) {
 
-  transform:translateY(-2px);
+  .nav-links {
+    display: none;
+  }
 
-  box-shadow:
-    0 0 40px rgba(200,169,107,.45);
+  .nav-container {
+    padding: 0 24px;
+  }
+
+  .logo {
+    font-size: 28px;
+  }
+
+  .nav-btn {
+    padding: 12px 20px;
+  }
 }
+
 </style>

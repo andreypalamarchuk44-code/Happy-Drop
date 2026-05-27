@@ -1,91 +1,112 @@
 <template>
-  <section class="ingredients">
+  <section class="ingredients-section">
 
-    <div class="section-top">
+    <!-- BACKGROUND GLOW -->
+    <div class="bg-glow left"></div>
+    <div class="bg-glow right"></div>
 
-      <p class="label">
-        COLLECTION
-      </p>
+    <div class="container">
 
-      <h2>
-        Авторські<br>
-        смаки
-      </h2>
+      <!-- HEADER -->
+      <div class="section-header">
 
-    </div>
+        <span class="section-tag">
+          КОЛЕКЦІЯ СМАКІВ
+        </span>
 
-    <div class="cards">
+        <h2>
+          Преміальні<br />
+          інгредієнти
+        </h2>
 
-      <div class="card">
-
-        <div class="card-glow"></div>
-
-        <img src="/img/bottlecharry.jpg" alt="">
-
-        <div class="card-content">
-
-          <span class="type">
-            CHERRY
-          </span>
-
-          <h3>
-            Вишнева
-          </h3>
-
-          <p>
-            Насичений ягідний смак з м’яким
-            післясмаком та ароматом спецій.
-          </p>
-
-        </div>
+        <p>
+          Ми поєднуємо натуральні компоненти,
+          глибокі аромати та авторські рецептури.
+        </p>
 
       </div>
 
-      <div class="card">
+      <!-- GRID -->
+      <div class="ingredients-grid">
 
-        <div class="card-glow"></div>
+        <!-- CARD -->
+        <div class="ingredient-card">
 
-        <img src="/img/bottlehoney.jpg" alt="">
+          <div class="card-glow"></div>
 
-        <div class="card-content">
+          <img
+            src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea"
+            alt=""
+          />
 
-          <span class="type">
-            HONEY
-          </span>
+          <div class="card-content">
 
-          <h3>
-            Медовуха
-          </h3>
+            <span>01</span>
 
-          <p>
-            Теплий медовий аромат з нотками
-            кориці та натуральних трав.
-          </p>
+            <h3>
+              Натуральний мед
+            </h3>
+
+            <p>
+              Глибокий солодкий післясмак
+              та оксамитова текстура.
+            </p>
+
+          </div>
 
         </div>
 
-      </div>
+        <!-- CARD -->
+        <div class="ingredient-card">
 
-      <div class="card">
+          <div class="card-glow"></div>
 
-        <div class="card-glow"></div>
+          <img
+            src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b"
+            alt=""
+          />
 
-        <img src="/img/bottlebary.jpg" alt="">
+          <div class="card-content">
 
-        <div class="card-content">
+            <span>02</span>
 
-          <span class="type">
-            HERBAL
-          </span>
+            <h3>
+              Авторська витримка
+            </h3>
 
-          <h3>
-            Трав’яна
-          </h3>
+            <p>
+              Насичений характер
+              з теплими деревними нотами.
+            </p>
 
-          <p>
-            Глибокий смак карпатських трав
-            та природної витримки.
-          </p>
+          </div>
+
+        </div>
+
+        <!-- CARD -->
+        <div class="ingredient-card">
+
+          <div class="card-glow"></div>
+
+          <img
+            src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3"
+            alt=""
+          />
+
+          <div class="card-content">
+
+            <span>03</span>
+
+            <h3>
+              Цитрусові акценти
+            </h3>
+
+            <p>
+              Баланс свіжості
+              та преміального аромату.
+            </p>
+
+          </div>
 
         </div>
 
@@ -98,155 +119,251 @@
 
 <style scoped>
 
-.ingredients{
-  position:relative;
+.ingredients-section {
+  position: relative;
 
-  padding:10rem 8%;
+  padding: 140px 0;
+
+  background: #050505;
+
+  overflow: hidden;
+}
+
+/* BACKGROUND GLOWS */
+
+.bg-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  opacity: 0.18;
+}
+
+.bg-glow.left {
+  top: 0;
+  left: -120px;
+
+  background: #ff7b00;
+}
+
+.bg-glow.right {
+  bottom: -100px;
+  right: -120px;
+
+  background: #d6a55c;
+}
+
+/* CONTAINER */
+
+.container {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 0 80px;
+}
+
+/* HEADER */
+
+.section-header {
+  text-align: center;
+
+  margin-bottom: 80px;
+}
+
+.section-tag {
+  display: inline-block;
+
+  color: #d6a55c;
+
+  letter-spacing: 2px;
+
+  font-size: 13px;
+
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+
+  color: white;
+
+  font-size: 82px;
+
+  line-height: 0.95;
+
+  margin-bottom: 24px;
+}
+
+.section-header p {
+  color: rgba(255,255,255,0.68);
+
+  max-width: 700px;
+
+  margin: auto;
+
+  line-height: 1.8;
+
+  font-size: 18px;
+}
+
+/* GRID */
+
+.ingredients-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 28px;
+}
+
+/* CARD */
+
+.ingredient-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  min-height: 520px;
 
   background:
     linear-gradient(
-      to bottom,
-      var(--bg1),
-      var(--bg2)
+      180deg,
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.02)
     );
 
-  overflow:hidden;
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  transition: 0.5s ease;
+
+  backdrop-filter: blur(20px);
 }
 
-.section-top{
-  margin-bottom:5rem;
-}
-
-.label{
-  color:var(--gold);
-
-  letter-spacing:.3em;
-  font-size:.75rem;
-
-  margin-bottom:1rem;
-}
-
-.ingredients h2{
-  font-family:var(--serif);
-
-  font-size:5rem;
-  line-height:1;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:2rem;
-}
-
-.card{
-  position:relative;
-
-  padding:3rem 2rem;
-
-  border-radius:32px;
-
-  background:var(--surface);
-
-  border:1px solid var(--border);
-
-  overflow:hidden;
-
-  backdrop-filter:blur(20px);
-
-  transition:
-    transform .7s var(--ease),
-    border-color .5s var(--ease),
-    box-shadow .7s var(--ease);
-}
-
-.card:hover{
+.ingredient-card:hover {
   transform:
-    translateY(-10px);
+    translateY(-10px)
+    scale(1.02);
 
-  border-color:var(--border-h);
+  border:
+    1px solid rgba(214,165,92,0.25);
 
   box-shadow:
-    0 20px 80px rgba(0,0,0,.35);
+    0 30px 80px rgba(0,0,0,0.45);
 }
 
-.card-glow{
-  position:absolute;
+.card-glow {
+  position: absolute;
 
-  width:220px;
-  height:220px;
-
-  border-radius:50%;
+  width: 320px;
+  height: 320px;
 
   background:
     radial-gradient(
       circle,
-      rgba(200,169,107,.18),
+      rgba(255,140,0,0.22),
       transparent 70%
     );
 
-  top:-80px;
-  right:-80px;
+  top: -100px;
+  right: -100px;
 
-  filter:blur(30px);
+  filter: blur(40px);
+
+  opacity: 0;
+
+  transition: 0.5s;
 }
 
-.card img{
-  width:220px;
-
-  margin:auto;
-
-  margin-bottom:2rem;
-
-  transition:
-    transform .8s var(--ease);
+.ingredient-card:hover .card-glow {
+  opacity: 1;
 }
 
-.card:hover img{
-  transform:
-    translateY(-10px)
-    scale(1.03);
+.ingredient-card img {
+  width: 100%;
+  height: 320px;
+
+  object-fit: cover;
+
+  transition: 0.5s;
 }
 
-.type{
-  display:inline-block;
-
-  color:var(--gold);
-
-  letter-spacing:.2em;
-  font-size:.7rem;
-
-  margin-bottom:1rem;
+.ingredient-card:hover img {
+  transform: scale(1.06);
 }
 
-.card h3{
-  font-family:var(--serif);
-
-  font-size:2.2rem;
-
-  margin-bottom:1rem;
+.card-content {
+  padding: 34px;
 }
 
-.card p{
-  color:var(--text2);
+.card-content span {
+  display: inline-block;
 
-  line-height:1.8;
+  color: #d6a55c;
+
+  font-size: 14px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 18px;
 }
 
-@media(max-width:1100px){
+.card-content h3 {
+  color: white;
 
-  .cards{
-    grid-template-columns:1fr;
+  font-size: 34px;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  margin-bottom: 18px;
+}
+
+.card-content p {
+  color: rgba(255,255,255,0.68);
+
+  line-height: 1.8;
+
+  font-size: 16px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+  .ingredients-grid {
+    grid-template-columns: 1fr;
   }
 
-  .ingredients h2{
-    font-size:3.5rem;
+  .section-header h2 {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 0 24px;
   }
 
-  .card{
-    text-align:center;
+  .section-header h2 {
+    font-size: 42px;
   }
 
+  .ingredient-card {
+    min-height: auto;
+  }
 }
 
 </style>
