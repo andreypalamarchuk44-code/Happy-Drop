@@ -1,4 +1,5 @@
 <template>
+  <footer id="footer" class="footer">
   <footer class="footer">
 
     <div class="footer-top">
@@ -101,7 +102,7 @@
     <div class="footer-bg">
       HAPPYDROP
     </div>
-
+</footer>
   </footer>
 </template>
 

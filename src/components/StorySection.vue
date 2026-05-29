@@ -2,7 +2,7 @@
   <section class="story-section">
 
     <div class="container">
-
+      <section id="history">
       <!-- LEFT BIG CARD -->
       <div class="story-card big-card">
 
@@ -37,6 +37,7 @@
         </div>
 
       </div>
+      </section>
 
       <!-- RIGHT SIDE -->
       <div class="right-grid">

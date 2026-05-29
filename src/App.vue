@@ -1,10 +1,10 @@
 <template>
 
-  <Navbar />
+<Navbar :cart="cart" />
 
   <HeroSection />
 
-  <CollectionSection />
+  <CollectionSection :addToCart="addToCart" />
 
 
   <StorySection />
@@ -13,21 +13,53 @@
 
   <Testimonials />
 
-  <CTASection />
 
   <FooterSection />
 
 </template>
-
 <script setup>
+
+import {
+  ref,
+  watch,
+  onMounted
+} from 'vue'
+
 import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import CollectionSection from './components/CollectionSection.vue'
 import StorySection from './components/StorySection.vue'
 import IngredientsSection from './components/IngredientsSection.vue'
 import Testimonials from './components/Testimonials.vue'
-import CTASection from './components/CTASection.vue'
 import FooterSection from './components/FooterSection.vue'
+
+const cart = ref([])
+onMounted(() => {
+
+  const savedCart = localStorage.getItem('cart')
+
+  if(savedCart){
+
+    cart.value = JSON.parse(savedCart)
+
+  }
+
+})
+
+const addToCart = (product) => {
+
+  cart.value.push(product)
+
+}
+watch(cart, () => {
+
+  localStorage.setItem(
+    'cart',
+    JSON.stringify(cart.value)
+  )
+
+}, { deep:true })
+
 </script>
 <style>
 

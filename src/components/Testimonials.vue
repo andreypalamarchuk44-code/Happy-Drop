@@ -1,21 +1,38 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
-const reviews = ref([
-  {
-    initials: 'AK',
-    name: 'Андрій',
-    city: 'Київ',
-    text: 'Один із найкращих смаків, які я пробував.'
-  },
-  {
-    initials: 'ML',
-    name: 'Марія',
-    city: 'Львів',
-    text: 'Дуже стильна подача та premium атмосфера.'
+const reviews = ref([])
+ onMounted(() => {
+
+  const savedReviews = localStorage.getItem('reviews')
+
+  if(savedReviews){
+
+    reviews.value = JSON.parse(savedReviews)
+
+  } else {
+
+    reviews.value = [
+
+      {
+        initials: 'AK',
+        name: 'Андрій',
+        city: 'Київ',
+        text: 'Один із найкращих смаків, які я пробував.'
+      },
+
+      {
+        initials: 'ML',
+        name: 'Марія',
+        city: 'Львів',
+        text: 'Дуже стильна подача та premium атмосфера.'
+      }
+
+    ]
+
   }
-])
 
+})
 const newName = ref('')
 const newCity = ref('')
 const newText = ref('')
@@ -38,6 +55,14 @@ const addReview = () => {
   newCity.value = ''
   newText.value = ''
 }
+watch(reviews, () => {
+
+  localStorage.setItem(
+    'reviews',
+    JSON.stringify(reviews.value)
+  )
+
+}, { deep: true })
 </script>
 
 <template>
@@ -45,12 +70,14 @@ const addReview = () => {
   <section class="testimonials">
 
     <div class="container">
+   
 
       <div class="section-header">
 
         <span class="section-tag">
           ВІДГУКИ
         </span>
+        
 
         <h2>
           Враження,<br>
@@ -58,6 +85,7 @@ const addReview = () => {
         </h2>
 
       </div>
+     
 
       <!-- REVIEWS -->
 
@@ -181,6 +209,7 @@ const addReview = () => {
 
 .section-header h2{
   font-family:'Cormorant Garamond', serif;
+  color: #5a3218;
 
   font-size:5.5rem;
 
@@ -334,7 +363,7 @@ const addReview = () => {
   font-family:'Cormorant Garamond', serif;
 
   font-size:3rem;
-
+  color: #8d7c70;
   margin-bottom:2rem;
 
   text-align:center;
