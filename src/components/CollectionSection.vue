@@ -77,7 +77,7 @@
             </p>
 
             <button>
-              Детальніше
+              Купити
             </button>
 
           </div>
@@ -99,63 +99,58 @@ const products = [
     name: 'Cherry Night',
     taste: 'Вишня · дуб · карамель',
     price: '690₴',
-    image:
-      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b',
+    image: '/img/cherry.jpg' ,
     description:
       'Глибокий вишневий смак з теплою деревною витримкою.'
   },
 
   {
     id: 2,
-    name: 'Honey Gold',
-    taste: 'Мед · ваніль · спеції',
+    name: 'Fresh Citrus',
+    taste: 'Апельсин · кориця · дим' ,
     price: '720₴',
-    image:
-      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3',
+    image: '/img/lemon.jpg' ,
     description:
-      'Мʼякий аромат меду з пряним післясмаком.'
+       'Яскравий цитрусовий характер з легкою димністю.'  
+    
   },
 
   {
     id: 3,
-    name: 'Orange Smoke',
-    taste: 'Апельсин · кориця · дим',
+    name: 'Sweet Honey',
+    taste: 'Мед · ваніль · спеції',
     price: '740₴',
-    image:
-      'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea',
+    image: '/img/honey.jpg' ,
     description:
-      'Яскравий цитрусовий характер з легкою димністю.'
+     'Мʼякий аромат меду з пряним післясмаком.'
   },
 
   {
     id: 4,
     name: 'Forest Berry',
-    taste: 'Лісові ягоди · мʼята',
+    taste: 'Чорниця · ожина · смородина',
     price: '680₴',
-    image:
-      'https://images.unsplash.com/photo-1514361892635-eae31ec8f9c0',
+    image: '/img/berry.jpg' ,
     description:
       'Свіжий ягідний аромат з холодним акцентом.'
   },
 
   {
     id: 5,
-    name: 'Dark Plum',
-    taste: 'Слива · шоколад · дуб',
+    name: 'Sweet Cherry',
+    taste: 'Черешня · дубова витримка · карамель',
     price: '790₴',
-    image:
-      'https://images.unsplash.com/photo-1470337458703-46ad1756a187',
+    image: '/img/sweetcherry.jpg' ,
     description:
       'Темний насичений смак для особливих вечорів.'
   },
 
   {
     id: 6,
-    name: 'Apple Fire',
-    taste: 'Яблуко · кориця · мед',
+    name: 'Cold Mint',
+    taste: 'М’ята · лайм · трав’яний мед',
     price: '650₴',
-    image:
-      'https://images.unsplash.com/photo-1504674900247-0877df9cc836',
+     image: '/img/mint.jpg' ,
     description:
       'Теплий фруктовий профіль з мʼякою солодкістю.'
   }
@@ -337,12 +332,13 @@ const products = [
 .product-image {
   overflow: hidden;
 
-  height: 320px;
+  height: 400px;
 }
 
 .product-image img {
   width: 100%;
   height: 100%;
+ 
 
   object-fit: cover;
 

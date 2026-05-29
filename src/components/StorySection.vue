@@ -8,9 +8,8 @@
 
         <div class="image-overlay"></div>
 
-        <img
-          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b"
-          alt=""
+        <img src="/img/mainbottle.jpg" alt=""
+         
         />
 
         <div class="card-content">
@@ -65,7 +64,7 @@
             <span>✦</span>
             <div>
               <h4>Преміальна витримка</h4>
-              <p>Глибокий насичений характер</p>
+              <p>Глибокий насичений смак</p>
             </div>
           </div>
 
@@ -77,20 +76,21 @@
           <div class="gradient"></div>
 
           <img
-            src="https://images.unsplash.com/photo-1514361892635-eae31ec8f9c0"
+            src="/img/tincture.jpg"
             alt=""
           />
 
           <div class="atmosphere-content">
 
-            <span class="section-tag">
-              АТМОСФЕРА
-            </span>
+            <!-- <span class="section-tag">
+            
+            </span> -->
 
-            <h3>
-              Моменти,<br />
-              які залишаються
-            </h3>
+           <h3>
+                Смак,<br />
+              який хочеться<br />
+               запам’ятати
+          </h3>
 
           </div>
 

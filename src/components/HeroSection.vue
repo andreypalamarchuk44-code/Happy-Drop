@@ -48,7 +48,7 @@
         <div class="bottle-glow"></div>
 
         <img
-          src="/img/bottle.png"
+          src="/img/allbottle.jpg"
           alt="bottle"
           class="hero-bottle"
         >
@@ -127,7 +127,8 @@
 .hero-text{
   max-width:540px;
 
-  color:var(--text2);
+  color:#272625;
+;
 
   font-size:1.05rem;
   line-height:1.9;
@@ -209,6 +210,7 @@
 .hero-bottle{
   position:relative;
   z-index:5;
+  border-radius: 50px;
 
   width:580px;
 
@@ -327,10 +329,65 @@
 
 }
 
+/* ========================= */
+/* 1400px */
+/* ========================= */
+
+@media(max-width:1400px){
+
+  .hero h1{
+    font-size:6rem;
+  }
+
+  .hero-bottle{
+    width:500px;
+  }
+
+}
+
+/* ========================= */
+/* 1200px */
+/* ========================= */
+
+@media(max-width:1200px){
+
+  .hero{
+    padding:0 5%;
+  }
+
+  .hero-container{
+    gap:3rem;
+  }
+
+  .hero h1{
+    font-size:5rem;
+  }
+
+  .hero-text{
+    font-size:1rem;
+  }
+
+  .hero-bottle{
+    width:420px;
+  }
+
+  .hero-bg-text{
+    font-size:8rem;
+  }
+
+}
+
+/* ========================= */
+/* 1100px */
+/* ========================= */
+
 @media(max-width:1100px){
 
   .hero{
     padding-top:10rem;
+    padding-bottom:6rem;
+
+    min-height:auto;
   }
 
   .hero-container{
@@ -342,7 +399,7 @@
   .hero-left{
     margin:auto;
 
-    margin-bottom:4rem;
+    margin-bottom:3rem;
   }
 
   .hero-text{
@@ -351,6 +408,8 @@
 
   .hero-buttons{
     justify-content:center;
+
+    flex-wrap:wrap;
   }
 
   .hero h1{
@@ -358,13 +417,139 @@
   }
 
   .hero-bottle{
-    width:320px;
+    width:340px;
   }
 
   .hero-bg-text{
-    font-size:4rem;
+    font-size:5rem;
+
+    bottom:0;
   }
 
 }
 
+/* ========================= */
+/* 768px */
+/* ========================= */
+
+@media(max-width:768px){
+
+  .hero{
+    padding:8rem 1.5rem 4rem;
+  }
+
+  .hero-label{
+    font-size:.62rem;
+
+    letter-spacing:.28em;
+
+    margin-bottom:1.5rem;
+  }
+
+  .hero h1{
+    font-size:3.2rem;
+
+    line-height:1;
+  }
+
+  .hero-text{
+    font-size:.95rem;
+
+    line-height:1.7;
+
+    margin-bottom:2rem;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+
+    align-items:center;
+  }
+
+  .hero-btn{
+    width:100%;
+    max-width:320px;
+
+    height:54px;
+
+    font-size:.68rem;
+  }
+
+  .hero-bottle{
+    width:280px;
+
+    border-radius:35px;
+  }
+
+  .bottle-glow{
+    width:260px;
+    height:260px;
+  }
+
+  .hero-bg-text{
+    font-size:3rem;
+
+    letter-spacing:.12em;
+  }
+
+  .light-1{
+    width:300px;
+    height:300px;
+
+    top:-100px;
+    left:-120px;
+  }
+
+  .light-2{
+    width:350px;
+    height:350px;
+
+    right:-180px;
+    bottom:-180px;
+  }
+
+}
+
+/* ========================= */
+/* 480px */
+/* ========================= */
+
+@media(max-width:480px){
+
+  .hero{
+    padding:7rem 1rem 3rem;
+  }
+
+  .hero h1{
+    font-size:2.5rem;
+  }
+
+  .hero-text{
+    font-size:.88rem;
+  }
+
+  .hero-btn{
+    height:50px;
+
+    padding:0 1.4rem;
+  }
+
+  .hero-bottle{
+    width:220px;
+
+    border-radius:28px;
+  }
+
+  .bottle-glow{
+    width:200px;
+    height:200px;
+
+    filter:blur(50px);
+  }
+
+  .hero-bg-text{
+    font-size:2rem;
+  }
+
+}
 </style>

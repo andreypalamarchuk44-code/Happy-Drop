@@ -8,16 +8,16 @@
         HAPPY<span>DROP</span>
       </div>
 
-      <!-- NAVIGATION -->
+      <!-- DESKTOP NAV -->
       <nav class="nav-links">
 
         <a href="#">
           Головна
         </a>
 
-     <a href="#collection">
-        Колекція
-      </a>
+        <a href="#collection">
+          Колекція
+        </a>
 
         <a href="#">
           Історія
@@ -38,10 +38,64 @@
         Замовити
       </button>
 
+      <!-- BURGER -->
+      <div
+        class="burger"
+        @click="menuOpen = !menuOpen"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
     </div>
+
+    <!-- MOBILE MENU -->
+    <transition name="menu">
+
+      <div
+        class="mobile-menu"
+        v-if="menuOpen"
+      >
+
+        <a href="#">
+          Головна
+        </a>
+
+        <a href="#collection">
+          Колекція
+        </a>
+
+        <a href="#">
+          Історія
+        </a>
+
+        <a href="#">
+          Відгуки
+        </a>
+
+        <a href="#">
+          Контакти
+        </a>
+
+        <button class="mobile-btn">
+          Замовити
+        </button>
+
+      </div>
+
+    </transition>
 
   </header>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const menuOpen = ref(false)
+</script>
 
 <style scoped>
 
@@ -101,6 +155,8 @@
   color: #d6a55c;
 }
 
+/* DESKTOP NAV */
+
 .nav-links {
   display: flex;
   gap: 42px;
@@ -144,7 +200,10 @@
   width: 100%;
 }
 
-.nav-btn {
+/* BUTTON */
+
+.nav-btn,
+.mobile-btn {
   background:
     linear-gradient(
       135deg,
@@ -170,29 +229,147 @@
     0 10px 30px rgba(214,165,92,0.18);
 }
 
-.nav-btn:hover {
+.nav-btn:hover,
+.mobile-btn:hover {
   transform: translateY(-3px);
 
   box-shadow:
     0 18px 40px rgba(214,165,92,0.35);
 }
 
-@media (max-width: 992px) {
+/* BURGER */
 
-  .nav-links {
-    display: none;
-  }
+.burger {
+  display: none;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  cursor: pointer;
+}
+
+.burger span {
+  width: 28px;
+  height: 2px;
+
+  background: white;
+
+  border-radius: 10px;
+
+  transition: 0.3s;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu {
+  display: none;
+}
+
+/* ANIMATION */
+
+.menu-enter-active,
+.menu-leave-active {
+  transition: 0.35s ease;
+}
+
+.menu-enter-from,
+.menu-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (max-width: 992px) {
 
   .nav-container {
     padding: 0 24px;
+  }
+
+  .nav-links,
+  .nav-btn {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
   }
 
   .logo {
     font-size: 28px;
   }
 
-  .nav-btn {
-    padding: 12px 20px;
+  .mobile-menu {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+    padding: 30px 24px;
+
+    background: rgba(10,10,10,0.98);
+
+    backdrop-filter: blur(20px);
+
+    border-top:
+      1px solid rgba(255,255,255,0.06);
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-family: 'Inter', sans-serif;
+  }
+
+  .mobile-btn {
+    width: 100%;
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 576px) {
+
+  .navbar {
+    padding: 18px 0;
+  }
+
+  .nav-container {
+    padding: 0 18px;
+  }
+
+  .logo {
+    font-size: 24px;
+
+    letter-spacing: 1px;
+  }
+
+  .burger span {
+    width: 24px;
+  }
+
+  .mobile-menu {
+    gap: 20px;
+
+    padding: 24px 18px;
+  }
+
+  .mobile-menu a {
+    font-size: 16px;
+  }
+
+  .mobile-btn {
+    padding: 12px;
   }
 }
 

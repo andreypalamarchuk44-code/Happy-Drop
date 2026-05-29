@@ -6,7 +6,7 @@
       <div class="footer-brand">
 
         <a href="#" class="logo">
-          NASTO<span>YANKA</span>
+          HAPPY<span>DROP</span>
         </a>
 
         <p>
@@ -89,7 +89,7 @@
     <div class="footer-bottom">
 
       <p>
-        © 2026 NASTOYANKA. All rights reserved.
+        © 2026 HAPPYDROP. All rights reserved.
       </p>
 
       <span>
@@ -138,6 +138,7 @@
 
 .logo{
   display:inline-block;
+  color:#b9b4b4d5 ;
 
   font-size:1.4rem;
   font-weight:800;
@@ -149,11 +150,11 @@
 }
 
 .logo span{
-  color:var(--gold);
+  color:#995e1a;
 }
 
 .footer-brand p{
-  color:var(--text2);
+  color: #272525;
 
   line-height:1.9;
 }
@@ -170,7 +171,7 @@
 }
 
 .title{
-  color:var(--gold);
+  color:#7e5b2e;
 
   font-size:.75rem;
   letter-spacing:.25em;
@@ -180,7 +181,7 @@
 }
 
 .column a{
-  color:var(--text2);
+  color:#aa7b1e;
 
   transition:
     color .3s var(--ease),
@@ -188,7 +189,7 @@
 }
 
 .column a:hover{
-  color:var(--text);
+  color:#5f6460;
 
   transform:translateX(4px);
 }
@@ -203,7 +204,7 @@
 
   padding-top:2rem;
 
-  color:var(--text3);
+  color:#635a5a;
 
   font-size:.9rem;
 }
@@ -230,26 +231,162 @@
   white-space:nowrap;
 }
 
-@media(max-width:1000px){
+@media(max-width:1200px){
+
+  .footer{
+    padding:7rem 6% 3rem;
+  }
 
   .footer-top{
-    flex-direction:column;
+    gap:4rem;
   }
 
   .footer-links{
+    gap:4rem;
+  }
+
+  .footer-bg{
+    font-size:7rem;
+  }
+
+}
+
+/* ========================= */
+/* 1000px */
+/* ========================= */
+
+@media(max-width:1000px){
+
+  .footer{
+    padding:6rem 5% 3rem;
+  }
+
+  .footer-top{
+    flex-direction:column;
+
+    gap:3rem;
+  }
+
+  .footer-brand{
+    max-width:100%;
+  }
+
+  .footer-links{
+    width:100%;
+
     flex-wrap:wrap;
+
+    justify-content:space-between;
+
     gap:3rem;
   }
 
   .footer-bottom{
     flex-direction:column;
+
     gap:1rem;
 
     text-align:center;
   }
 
   .footer-bg{
-    font-size:4rem;
+    font-size:5rem;
+
+    bottom:0;
+  }
+
+}
+
+/* ========================= */
+/* 768px */
+/* ========================= */
+
+@media(max-width:768px){
+
+  .footer{
+    padding:5rem 1.5rem 2rem;
+  }
+
+  .footer-top{
+    padding-bottom:3rem;
+  }
+
+  .logo{
+    font-size:1.2rem;
+
+    letter-spacing:.18em;
+  }
+
+  .footer-brand p{
+    font-size:.95rem;
+
+    line-height:1.7;
+  }
+
+  .footer-links{
+    flex-direction:column;
+
+    gap:2.5rem;
+  }
+
+  .column{
+    gap:.8rem;
+  }
+
+  .title{
+    margin-bottom:.5rem;
+  }
+
+  .column a{
+    font-size:.95rem;
+  }
+
+  .footer-bottom{
+    padding-top:1.5rem;
+
+    font-size:.85rem;
+  }
+
+  .footer-bg{
+    font-size:3rem;
+
+    letter-spacing:.15em;
+  }
+
+}
+
+/* ========================= */
+/* 480px */
+/* ========================= */
+
+@media(max-width:480px){
+
+  .footer{
+    padding:4rem 1rem 1.8rem;
+  }
+
+  .logo{
+    font-size:1rem;
+  }
+
+  .footer-brand p{
+    font-size:.88rem;
+  }
+
+  .title{
+    font-size:.68rem;
+  }
+
+  .column a{
+    font-size:.88rem;
+  }
+
+  .footer-bottom{
+    font-size:.78rem;
+  }
+
+  .footer-bg{
+    font-size:2rem;
   }
 
 }
