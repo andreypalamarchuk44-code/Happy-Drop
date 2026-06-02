@@ -135,22 +135,26 @@ function checkout() {
 
 /* v-click-outside directive */
 const vClickOutside = {
-  mounted(el: HTMLElement, binding: any) {
+  mounted(el: HTMLElement, binding: { value: () => void }) {
+
     const handler = (e: MouseEvent) => {
       if (!el.contains(e.target as Node)) {
         binding.value()
       }
     }
 
-    el.addEventListener('click', (e) => e.stopPropagation())
-    document.addEventListener('click', handler)
+    // зберігаємо посилання в DOM через WeakMap-лайт підхід
+    ;(el as any).__clickOutside__ = handler
 
-    ;(el as any).__handler__ = handler
+    setTimeout(() => {
+      document.addEventListener('click', handler)
+    }, 0)
   },
 
   unmounted(el: HTMLElement) {
-    document.removeEventListener('click', (el as any).__handler__)
-  }
+    const handler = (el as any).__clickOutside__
+    document.removeEventListener('click', handler)
+  },
 }
 </script>
 
