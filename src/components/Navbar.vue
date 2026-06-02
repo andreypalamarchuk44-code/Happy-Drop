@@ -57,36 +57,33 @@
       <!-- DESKTOP NAV -->
       <nav class="nav-links">
 
-        <a href="#" @click.prevent="scrollTo('top')">
-          Головна
-        </a>
+         <a href="#" @click.prevent="scrollTo('top')">
+    Головна
+  </a>
 
-        <a href="#collection" @click.prevent="scrollTo('collection')">
-          Колекція
-        </a>
+  <a href="#collection" @click.prevent="scrollTo('collection')">
+    Колекція
+  </a>
 
-        <a href="#history" @click.prevent="scrollToSection('history')">
-            Історія
-        </a>
+  <a href="#history" @click.prevent="scrollTo('history')">
+    Історія
+  </a>
 
-        <a href="#testimonials" @click.prevent="scrollTo('testimonials')">
-          Відгуки
-        </a>
+  <a href="#testimonials" @click.prevent="scrollTo('testimonials')">
+    Відгуки
+  </a>
 
-       <a href="#footer" @click.prevent="scrollToSection('footer')">
-  Контакти
-</a>
+  <a href="#footer" @click.prevent="scrollTo('footer')">
+    Контакти
+  </a>
 
-      </nav>
+</nav>
+
+  
 
       <!-- CTA -->
-  <button
-  class="nav-btn"
-  @click="cartOpen = !cartOpen"
->
-
-  Кошик {{ cart.length }}
-
+  <button class="cart-mobile" @click="cartOpen = !cartOpen">
+  Кошик🛒 {{ cart.length }}
 </button>
 
       <!-- BURGER -->
@@ -102,30 +99,29 @@
     <transition name="menu">
 
       <div class="mobile-menu" v-if="menuOpen">
+<div class="mobile-menu" v-if="menuOpen">
 
-        <a href="#" @click.prevent="scrollTo('top'); menuOpen=false">
-          Головна
-        </a>
+  <a href="#" @click.prevent="scrollTo('top')">
+    Головна
+  </a>
 
-        <a href="#collection" @click.prevent="scrollTo('collection'); menuOpen=false">
-          Колекція
-        </a>
+  <a href="#collection" @click.prevent="scrollTo('collection')">
+    Колекція
+  </a>
 
-        <a href="#story" @click.prevent="scrollTo('story'); menuOpen=false">
-          Історія
-        </a>
+  <a href="#history" @click.prevent="scrollTo('history')">
+    Історія
+  </a>
 
-        <a href="#testimonials" @click.prevent="scrollToSection('testimonials')">
-          Відгуки
-        </a>
+  <a href="#testimonials" @click.prevent="scrollTo('testimonials')">
+    Відгуки
+  </a>
 
-        <a href="#footer" @click.prevent="scrollTo('footer'); menuOpen=false">
-          Контакти
-        </a>
+  <a href="#footer" @click.prevent="scrollTo('footer')">
+    Контакти
+  </a>
 
-       <a href="#testimonials" @click.prevent="scrollToSection('testimonials')">
-        Історія
-    </a>
+</div>
 
       </div>
 
@@ -134,68 +130,46 @@
   </header>
 </template>
 <script setup>
-
 import { ref } from 'vue'
+
 
 const props = defineProps({
   cart: Array
 })
 
 const cartOpen = ref(false)
-
 const menuOpen = ref(false)
 
 const removeFromCart = (id) => {
-
-  props.cart.splice(
-
-    props.cart.findIndex(
-      item => item.id === id
-    ),
-
-    1
-
+  const index = props.cart.findIndex(
+    item => item.id === id
   )
 
+  if (index !== -1) {
+    props.cart.splice(index, 1)
+  }
 }
 
-function scrollTo(id) {
+const scrollTo = (id) => {
+
+  menuOpen.value = false
 
   if (id === 'top') {
-
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
-
     return
-
   }
 
-  const el = document.getElementById(id)
+  const element = document.getElementById(id)
 
-  if (el) {
-
-    el.scrollIntoView({
-      behavior: 'smooth'
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     })
-
   }
-
-}
-
-const scrollToSection = (id) => {
-
-  const section = document.getElementById(id)
-
-  if(section){
-
-    section.scrollIntoView({
-      behavior: 'smooth'
-    })
-
-  }
-
 }
 
 </script>
@@ -271,6 +245,9 @@ const scrollToSection = (id) => {
 
   margin-bottom:6px;
 }
+.cart-mobile {
+  display: none;
+}
 
 .cart-item p{
   color:#d6a55c;
@@ -310,6 +287,7 @@ const scrollToSection = (id) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logo {
@@ -388,7 +366,8 @@ const scrollToSection = (id) => {
 
 @media (max-width: 992px) {
   .nav-container { padding: 0 24px; }
-  .nav-links, .nav-btn { display: none; }
+  .nav-links  { display: none; }
+  .nav-btn {display: block; }
   .burger { display: flex; }
   .logo { font-size: 28px; }
 
@@ -400,6 +379,17 @@ const scrollToSection = (id) => {
     background: rgba(10,10,10,0.98);
     backdrop-filter: blur(20px);
     border-top: 1px solid rgba(255,255,255,0.06);
+  }
+   .cart-mobile {
+    display: block;
+    position: absolute;
+    right: 70px;
+    top: 22px;
+
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
   }
 
   .mobile-menu a {

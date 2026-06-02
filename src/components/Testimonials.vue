@@ -66,28 +66,18 @@ watch(reviews, () => {
 </script>
 
 <template>
-
-  <section class="testimonials">
+  <section id="testimonials" class="testimonials">
 
     <div class="container">
-   
 
       <div class="section-header">
-
-        <span class="section-tag">
-          ВІДГУКИ
-        </span>
-        
+        <span class="section-tag">ВІДГУКИ</span>
 
         <h2>
           Враження,<br>
           що залишаються
         </h2>
-
       </div>
-     
-
-      <!-- REVIEWS -->
 
       <div class="reviews-grid">
 
@@ -97,13 +87,9 @@ watch(reviews, () => {
           :key="index"
         >
 
-          <div class="quote">
-            ✦
-          </div>
+          <div class="quote">✦</div>
 
-          <p>
-            "{{ review.text }}"
-          </p>
+          <p>"{{ review.text }}"</p>
 
           <div class="review-footer">
 
@@ -112,15 +98,8 @@ watch(reviews, () => {
             </div>
 
             <div>
-
-              <h4>
-                {{ review.name }}
-              </h4>
-
-              <span>
-                {{ review.city }}
-              </span>
-
+              <h4>{{ review.name }}</h4>
+              <span>{{ review.city }}</span>
             </div>
 
           </div>
@@ -129,30 +108,13 @@ watch(reviews, () => {
 
       </div>
 
-      <!-- FORM -->
-
       <div class="review-form">
 
-        <h3>
-          Залишити відгук
-        </h3>
+        <h3>Залишити відгук</h3>
 
-        <input
-          v-model="newName"
-          type="text"
-          placeholder="Ваше ім’я"
-        >
-
-        <input
-          v-model="newCity"
-          type="text"
-          placeholder="Місто"
-        >
-
-        <textarea
-          v-model="newText"
-          placeholder="Ваш коментар"
-        ></textarea>
+        <input v-model="newName" placeholder="Ваше ім’я" />
+        <input v-model="newCity" placeholder="Місто" />
+        <textarea v-model="newText" placeholder="Ваш коментар"></textarea>
 
         <button @click="addReview">
           Надіслати
@@ -163,7 +125,6 @@ watch(reviews, () => {
     </div>
 
   </section>
-
 </template>
 
 <style scoped>

@@ -49,13 +49,17 @@
             Social
           </span>
 
-          <a href="#">
+          <a href="https://www.instagram.com/anjeyanjeyanjey/">
             Instagram
           </a>
 
-          <a href="#">
-            Telegram
-          </a>
+  <a 
+  href="https://t.me/HappyDrop_Store" 
+  target="_blank"
+  rel="noopener noreferrer"
+>
+ Telegram
+</a>
 
           <a href="#">
             TikTok
@@ -70,7 +74,7 @@
           </span>
 
           <a href="#">
-            hello@nastoyanka.com
+           andreypalamarchuk44@gmail.com
           </a>
 
           <a href="#">
@@ -78,7 +82,7 @@
           </a>
 
           <a href="#">
-            Ukraine
+            Ukraine, Ladyzhin
           </a>
 
         </div>
