@@ -135,15 +135,22 @@ function checkout() {
 
 /* v-click-outside directive */
 const vClickOutside = {
-  mounted(el: HTMLElement, binding: { value: () => void }) {
-    el._clickOutside = (e: MouseEvent) => {
-      if (!el.contains(e.target as Node)) binding.value()
+  mounted(el: HTMLElement, binding: any) {
+    const handler = (e: MouseEvent) => {
+      if (!el.contains(e.target as Node)) {
+        binding.value()
+      }
     }
-    setTimeout(() => document.addEventListener('click', el._clickOutside), 0)
+
+    el.addEventListener('click', (e) => e.stopPropagation())
+    document.addEventListener('click', handler)
+
+    ;(el as any).__handler__ = handler
   },
+
   unmounted(el: HTMLElement) {
-    document.removeEventListener('click', el._clickOutside)
-  },
+    document.removeEventListener('click', (el as any).__handler__)
+  }
 }
 </script>
 
