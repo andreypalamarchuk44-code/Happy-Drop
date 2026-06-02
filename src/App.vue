@@ -1,30 +1,26 @@
 <template>
+  <AgeGate v-if="!ageConfirmed" @confirmed="ageConfirmed = true" />
 
-<Navbar :cart="cart" />
-
-  <HeroSection />
-
-  <CollectionSection :addToCart="addToCart" />
-
-
-  <StorySection />
-
-  <IngredientsSection />
-
-  <Testimonials />
-
-
-  <FooterSection />
-
+  <template v-else>
+    <Navbar
+      :cart="cart"
+      @remove-from-cart="removeFromCart"
+      @clear-cart="clearCart"
+    />
+    <HeroSection />
+    <CollectionSection @add-to-cart="addToCart" />
+    <StorySection />
+    <IngredientsSection />
+    <Testimonials />
+    <FooterSection />
+  </template>
 </template>
-<script setup>
 
-import {
-  ref,
-  watch,
-  onMounted
-} from 'vue'
+<script setup lang="ts">
+import { ref, watch, onMounted } from 'vue'
+import type { Product } from './data/products'
 
+import AgeGate from './components/AgeGate.vue'
 import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import CollectionSection from './components/CollectionSection.vue'
@@ -33,52 +29,57 @@ import IngredientsSection from './components/IngredientsSection.vue'
 import Testimonials from './components/Testimonials.vue'
 import FooterSection from './components/FooterSection.vue'
 
-const cart = ref([])
+export interface CartItem extends Product {
+  qty: number
+}
+
+/* ── Age gate ── */
+const ageConfirmed = ref(false)
 onMounted(() => {
-
-  const savedCart = localStorage.getItem('cart')
-
-  if(savedCart){
-
-    cart.value = JSON.parse(savedCart)
-
-  }
-
+  ageConfirmed.value = localStorage.getItem('age_confirmed') === 'true'
+})
+watch(ageConfirmed, (v) => {
+  if (v) localStorage.setItem('age_confirmed', 'true')
 })
 
-const addToCart = (product) => {
+/* ── Cart ── */
+const cart = ref<CartItem[]>([])
 
-  cart.value.push(product)
+onMounted(() => {
+  const saved = localStorage.getItem('cart')
+  if (saved) cart.value = JSON.parse(saved)
+})
 
-}
 watch(cart, () => {
+  localStorage.setItem('cart', JSON.stringify(cart.value))
+}, { deep: true })
 
-  localStorage.setItem(
-    'cart',
-    JSON.stringify(cart.value)
-  )
+function addToCart(product: Product) {
+  const existing = cart.value.find((i) => i.id === product.id)
+  if (existing) {
+    existing.qty++
+  } else {
+    cart.value.push({ ...product, qty: 1 })
+  }
+}
 
-}, { deep:true })
+function removeFromCart(id: number) {
+  const idx = cart.value.findIndex((i) => i.id === id)
+  if (idx !== -1) cart.value.splice(idx, 1)
+}
 
+function clearCart() {
+  cart.value = []
+}
 </script>
-<style>
 
+<style>
 body {
   margin: 0;
-
   background: #050505;
-
   font-family: 'Inter', sans-serif;
-
   overflow-x: hidden;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 </style>
